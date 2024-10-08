@@ -31,6 +31,16 @@ import { reactive, ref } from 'vue';
     // Update component state:
     count.value++;
   }
+
+  const text = ref('');
+  const words = ref('');
+
+  function onInput(e) {
+    text.value = e.target.value;
+  }
+
+  // By using both the bind and on, two way bindings are possible.
+  // But model just combines both.
 </script>
 
 <template>
@@ -38,10 +48,21 @@ import { reactive, ref } from 'vue';
   <p>Count is: {{ counter.count }}</p>
   <p>{{ behold.split('').reverse().join('') }}</p>
 
-  <button v-on:click="increment"> Count is: {{ count }}</button>
-  <button @click="increment"> Second count is: {{ count }}</button>
-
+  <div>
+    <button v-on:click="increment"> Count is: {{ count }}</button>
+    <button @click="increment"> Second count is: {{ count }}</button>
+  </div>
   <!-- <h2 :class="accentClass">Make me red!</h2> -->
+
+  <div>
+    <input :class="textfield" 
+      :value="text" 
+      @input="onInput" 
+      placeholder="ENTER THE WORDS">
+    <p>{{ text }}</p>
+    <input v-model="words" placeholder="Work harder not smarter.">
+    <p>{{ words }}</p>
+  </div>
 </template>
 
 <style>
@@ -59,5 +80,9 @@ import { reactive, ref } from 'vue';
     font-weight: bold;
     font-size: 1rem;
     color:white;
+  }
+  
+  .textfield {
+    display: block;
   }
 </style>
