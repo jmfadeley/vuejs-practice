@@ -1,47 +1,63 @@
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { reactive, ref } from 'vue';
+
+  // Component logic.
+  // Declare some reactive state here.
+
+  // Reactive works on objects and arrays. Ref takes in anything
+  // but exposes it through `.value`
+  const counter = reactive({
+    count: 0
+  });
+
+  const message = ref('Hello world!');
+  console.log(message.value);
+
+  const behold = ref ('Watch me now, AH!');
+
+  counter.count++;
+
+  // v-bind is a directive used to attribute to a dynamic value. 
+  // It alwayts starts with v-, but you can just use a colon with
+  // the attribute in question. This makes the attributes responsive 
+  // to JS changes.
+
+  const titleId = ref('title');
+  // const accentClass = ref('accent'); // The magic!
+
+  const count = ref(0);
+  function increment() {
+    // Update component state:
+    count.value++;
+  }
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <h1 v-bind:id="titleId">{{ message }}</h1>
+  <p>Count is: {{ counter.count }}</p>
+  <p>{{ behold.split('').reverse().join('') }}</p>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <button v-on:click="increment"> Count is: {{ count }}</button>
+  <button @click="increment"> Second count is: {{ count }}</button>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <!-- <h2 :class="accentClass">Make me red!</h2> -->
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<style>
+  .accent {
+    color: red;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  button {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: chocolate;
+    border-radius:1rem;
+    border-color: azure;
+    font-weight: bold;
+    font-size: 1rem;
+    color:white;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
