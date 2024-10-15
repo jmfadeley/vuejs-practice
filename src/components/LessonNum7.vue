@@ -11,7 +11,7 @@ const todos = ref([
 ]);
 
 function addTodo() {
-  todos.value.push({id: id++, text: newTodo.value })
+  todos.value.push({id: id++, text: newTodo.value }); // Mutating.
   newTodo.value = '';
 }
 
@@ -35,6 +35,12 @@ function removeTodo(todo) {
 </template>
 
 <style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
   form, li {
     display: flex;
     align-items: center;

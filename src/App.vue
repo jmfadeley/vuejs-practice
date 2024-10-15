@@ -1,7 +1,9 @@
 <script setup>
 import {ref} from 'vue';
 import Lessons1Thru6 from './components/Lessons1Thru6.vue';
-import Lessons7Thru11 from './components/Lessons7Thru11.vue';
+import LessonNum7 from './components/LessonNum7.vue';
+import LessonNum8 from './components/LessonNum8.vue';
+import LessonNum9 from './components/LessonNum9.vue';
   const state = ref(0);
 
   function changeState(newState) {
@@ -12,12 +14,14 @@ import Lessons7Thru11 from './components/Lessons7Thru11.vue';
 <template>
   <div class="nav">
     <button @click="changeState(0)">Lessons 1-6</button>
-    <button @click="changeState(1)">Lessons 7-11</button>
-    <button @click="changeState(1)">Lessons 12-15</button>
+    <button @click="changeState(1)">Lesson 7</button>
+    <button @click="changeState(2)">Lesson 8</button>
+    <button @click="changeState(3)">Lesson 9</button>
   </div>
   <Lessons1Thru6 v-if="state == 0"/>
-  <Lessons7Thru11 v-else-if="state == 1"/>
-  <!-- <Lessons1Thru6 v-if="state == 0"/> -->
+  <LessonNum7 v-else-if="state == 1"/>
+  <LessonNum8 v-else-if="state == 2"/>
+  <LessonNum9 v-else-if="state == 3"/>
 </template>
 
 <style>
