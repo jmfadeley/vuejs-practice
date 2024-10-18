@@ -10,11 +10,11 @@
 </script>
 
 <template>
-  <p ref="pElementRef">Hello sailor.</p>
+  <p class="lesson9__ref" ref="pElementRef">Hello sailor.</p>
 </template>
 
 <style>
-  p {
+  .lesson9__ref {
     color: red;
   }
 </style>

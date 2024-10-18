@@ -4,6 +4,8 @@ import Lessons1Thru6 from './components/Lessons1Thru6.vue';
 import LessonNum7 from './components/LessonNum7.vue';
 import LessonNum8 from './components/LessonNum8.vue';
 import LessonNum9 from './components/LessonNum9.vue';
+import LessonNum10 from './components/LessonNum10.vue';
+import LessonNum11 from './components/LessonNum11.vue';
   const state = ref(0);
 
   function changeState(newState) {
@@ -17,11 +19,15 @@ import LessonNum9 from './components/LessonNum9.vue';
     <button @click="changeState(1)">Lesson 7</button>
     <button @click="changeState(2)">Lesson 8</button>
     <button @click="changeState(3)">Lesson 9</button>
+    <button @click="changeState(4)">Lesson 10</button>
+    <button @click="changeState(5)">Lesson 11</button>
   </div>
-  <Lessons1Thru6 v-if="state == 0"/>
-  <LessonNum7 v-else-if="state == 1"/>
-  <LessonNum8 v-else-if="state == 2"/>
-  <LessonNum9 v-else-if="state == 3"/>
+  <Lessons1Thru6 v-if="state === 0"/>
+  <LessonNum7 v-else-if="state === 1"/>
+  <LessonNum8 v-else-if="state === 2"/>
+  <LessonNum9 v-else-if="state === 3"/>
+  <LessonNum10 v-else-if="state === 4"/>
+  <LessonNum11 v-else-if="state === 5"/>
 </template>
 
 <style>
